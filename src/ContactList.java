@@ -12,6 +12,15 @@ public class ContactList {
     //○ Constructor
 
     public ContactList() {
+        // plug in to contacts
+        contacts = new ArrayList<>();
+        Student studentOne = new Student("Sofia", "Aguilar", "6508509328", 10);
+        Person personOne = new Person("Nick", "Wild", "2017259657");
+        Athlete athleteOne = new Athlete("Lucia", "Lee", "6505217668", "Palo Alto");
+        contacts.add(studentOne);
+        contacts.add(personOne);
+        contacts.add(athleteOne);
+
     }
 
     //○ getContacts()
@@ -117,6 +126,8 @@ public class ContactList {
             // ask user input until user types 0.
             Scanner scanner = new Scanner(System.in);
             int userInput = scanner.nextInt();
+            // buffer
+            scanner.nextLine();
 
             if (userInput == 1){
                 // add contacts
@@ -187,20 +198,20 @@ public class ContactList {
                 System.out.println("Enter a last name:");
                 String lastName = scanner.nextLine();
                 // if null then say somethinbg else
-                if (searchByFirstName(lastName) == null) {
+                if (searchByLastName(lastName) == null) {
                     System.out.println(lastName + " is not in the list");
                 } else {
-                    System.out.println(searchByFirstName(lastName));
+                    System.out.println(searchByLastName(lastName));
                 }
             } else if (userInput == 8) {
                 System.out.println("Enter a phone number:");
                 String phoneNumber = scanner.nextLine();
 
                 // if null then say somethinbg else
-                if (searchByFirstName(phoneNumber) == null) {
+                if (searchByPhoneNumber(phoneNumber) == null) {
                     System.out.println(phoneNumber + " is not in the list");
                 } else {
-                    System.out.println(searchByFirstName(phoneNumber));
+                    System.out.println(searchByPhoneNumber(phoneNumber));
                 }
             }
             else if (userInput == 0){
@@ -208,5 +219,11 @@ public class ContactList {
             }
 
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("HELLO");
+        ContactList contacts = new ContactList();
+        contacts.run();
     }
 }

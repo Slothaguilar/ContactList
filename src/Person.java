@@ -24,6 +24,6 @@ public class Person {
     }
     //○ toString method formatted as follows:
     public String toString(){
-        return firstName + lastName + "- #" + phoneNumber;
+        return firstName + " " + lastName + "- #" + phoneNumber;
     }
 }
