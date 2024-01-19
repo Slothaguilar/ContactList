@@ -20,6 +20,7 @@ public class ContactList {
         contacts.add(studentOne);
         contacts.add(personOne);
         contacts.add(athleteOne);
+        sortBy(contacts, 0);
 
     }
 
@@ -28,8 +29,7 @@ public class ContactList {
         return contacts;
     }
     //Modify the return type of this method so that it properly returns your contacts
-    //instance variable.
-    //○ addContact()
+
     //Write a function to add a contact to your list. The user should be able to add either
     //a Student object or an object of your new class to the list
     public void addContact(Person other){
@@ -41,6 +41,7 @@ public class ContactList {
         for (int i = 0; i < contacts.size(); i++){
             System.out.println(contacts.get(i));
         }
+
     }
 
     public void sortBy(ArrayList<Person> contacts, int sortBy){
@@ -48,6 +49,7 @@ public class ContactList {
         int n = contacts.size();
         for(int pass = 0; pass < n-1; pass++) {
             for (int comp = 0; comp < n - 1 - pass; comp++) {
+                // two strings
                 String s1 = "";
                 String s2 = "";
                 if (sortBy == 0) {
@@ -113,6 +115,7 @@ public class ContactList {
     public void run() {
         // abtraction CUT CODE
         while (true) {
+
             System.out.println("Menu:");
             System.out.println("1. Add Contact");
             System.out.println("2. List All Contacts By First Name");
@@ -152,6 +155,7 @@ public class ContactList {
                     int grade = scanner.nextInt();
                     Student student = new Student(nameFirst, nameLast, numberPhone, grade);
                     addContact(student);
+
                 }
                 else if (typePerson == 2){
                     // ask for club team
@@ -161,21 +165,25 @@ public class ContactList {
                     addContact(athlete);
                 }
 
+
             }
             else if (userInput == 2){
                 // list the contacts by first name
+                sortBy(contacts, 0);
                 for (int i = 0; i <contacts.size(); i++){
                     System.out.println(contacts.get(i).getFirstName());
                 }
             }
             else if (userInput == 3){
                 // list the contacts by last name
+                sortBy(contacts, 1);
                 for (int i = 0; i <contacts.size(); i++){
                     System.out.println(contacts.get(i).getLastName());
                 }
             }
             else if (userInput == 4){
                 // list the contacts by phone name
+                sortBy(contacts, 2);
                 for (int i = 0; i <contacts.size(); i++){
                     System.out.println(contacts.get(i).getPhoneNumber());
                 }
@@ -222,7 +230,7 @@ public class ContactList {
     }
 
     public static void main(String[] args) {
-        System.out.println("HELLO");
+        // System.out.println("HELLO");
         ContactList contacts = new ContactList();
         contacts.run();
     }
